@@ -1,26 +1,26 @@
 /*
-    Project name : IR Transmiter Sensor
-    Modified Date: 10-06-2024
+    Project name : Arduino Uno IR Transmitter (IR LED)
+    Modified Date: 29-06-2024
     Code by : Projectslearner
-    Website : https://projectslearner.com/learn/arduino-uno-ir-transmiter-sensor
+    Website : https://projectslearner.com/learn/arduino-uno-ir-transmitter
 */
 
-#include <IRremote.h>
+#include <IRremote.h>  // Include the IRremote library for modulation
 
-// Define pin for IR LED
-#define IR_LED_PIN 3
+// Define the pin connected to the IR LED
+const int IR_LED_PIN = 3;  // Change this pin according to your setup
 
-// Create IRsend object
-IRsend irsend;
+IRsend irsend;  // Create an instance of the IRsend class
 
 void setup() {
-  Serial.begin(9600);
+  // No specific setup needed for IR transmitter using IR LEDs
 }
 
 void loop() {
-  // Send IR signal
-  irsend.sendNEC(0x20DF10EF, 32); // Example NEC IR code (adjust as needed)
-  
-  Serial.println("IR signal sent");
-  delay(1000); // Delay between IR signals
+  // Send a sample IR signal (NEC protocol) to demonstrate
+  unsigned int data = 0x20DF10EF;  // Example IR code (NEC protocol)
+
+  // Send the IR signal
+  irsend.sendNEC(data, 32);  // Send the data and the number of bits
+  delay(1000);  // Delay before sending next signal
 }
